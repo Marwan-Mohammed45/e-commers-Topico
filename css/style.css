@@ -1,0 +1,1049 @@
+/* إعدادات الخطوط */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap');
+
+/* إعدادات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+/* متغيرات الألوان */
+:root {
+    --main-color: #5b8c5a; /* لون رئيسي أخضر أنيق */
+    --dark-color: #2e2e3a; /* لون داكن رمادي مائل للأزرق */
+    --parg-color: #808080; /* لون النصوص الثانوية */
+    --dark-red: #bf4040; /* لون أحمر داكن */
+    --border-color: #d9d9d9; /* لون الحدود */
+    --name-item: #0088cc; /* لون بارز للأسماء */
+}
+
+/* إعدادات الصفحة */
+body {
+    background: var(--bg-light);
+    color: var(--dark-color);
+    padding-top: 80px; /* إضافة هامش علوي لإظهار القسم أسفل الشريط الثابت */
+}
+
+/* الحاوية العامة */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* تنسيق الهيدر */
+
+
+/* تصميم القائمة الجانبية */
+.cart-sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 350px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: none; /* إخفاء بشكل افتراضي */
+    z-index: 1050;
+    overflow-y: auto;
+}
+
+/* الرأس */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: -20px;
+}
+
+.cart-header h2 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cart-header .close-btn {
+    font-size: 24px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* العناصر */
+.cart-items .cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.item-details {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.item-details p {
+    font-size: 14px;
+    margin: 0;
+    color: #333;
+}
+
+.item-details span {
+    font-size: 16px;
+    color: #555;
+}
+
+.remove-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.remove-btn:hover {
+    transition: .3s ease;
+    transform: scale(1.2);
+}
+
+/* الفوتر */
+.cart-footer {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+.subtotal {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.checkout-btn, .shop-more-btn {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-btn {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.shop-more-btn {
+    background-color: #f44336; /* لون مختلف لزر "تسوق أكثر" */
+    color: white;
+}
+
+.checkout-btn:hover {
+    background-color: darkgreen;
+}
+
+.shop-more-btn:hover {
+    background-color: #d32f2f; /* لون أغمق عند التحويم */
+}
+
+/* تصميم قسم المنتجات */
+.section1 {
+    margin-top: 50px; /* إضافة هامش علوي لتجنب التصادم مع الهيدر */
+}
+
+.carousel-item img {
+    height: 400px; /* تحديد ارتفاع الصور في السلايدر */
+    object-fit: cover; /* الحفاظ على نسبة العرض إلى الارتفاع */
+}
+
+/* تصميم القائمة الجانبية */
+.list-group {
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: var(--main-color);
+    color: white;
+}
+
+/* استجابة التصميم */
+@media (max-width: 768px) {
+    .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-sidebar {
+        width: 100%;
+    }
+
+    .cart-header h2 {
+        font-size: 16px;
+    }
+
+    .cart-footer {
+        padding: 10px;
+    }
+}
+
+.list-group {
+    margin-top: 20px;
+}
+
+/* تعديل الصور داخل الكاروسيل لتتناسب مع حجم الشاشة */
+.carousel-inner img {
+    width: 100%;
+    height: auto; /* لتقليص الصورة بشكل مناسب */
+}
+
+/* إضافة بعض التحسينات للعرض على الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .carousel-inner img {
+        height: 200px; /* يمكنك تعديل هذه القيمة حسب الحجم الذي تريده */
+    }
+}
+
+/* تنسيق الـ section */
+.Section2 {
+    margin-top: 50px;
+    background-color: #fff;
+}
+
+/* تنسيق الصف */
+.Section2 .row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* تنسيق الأعمدة */
+.Section2 .col-md-3 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    text-align: left;
+    flex: 0 0 19%;
+}
+
+/* تنسيق الصور */
+.Section2 .col-md-3 img {
+    width: 40px;
+    margin-right: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* تأثير التكبير عند تحويم الفأرة على الصورة */
+.Section2 .col-md-3 img:hover {
+    transform: scale(1.05);
+}
+
+/* تنسيق النصوص */
+.Section2 h3 {
+    margin-top: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.Section2 h3 span {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    font-weight: normal;
+}
+
+/* تنسيق الأبعاد على الشاشات الصغيرة */
+@media screen and (max-width: 768px) {
+    .Section2 .col-md-3 {
+        flex: 0 0 48%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .Section2 .col-md-3 {
+        flex: 0 0 100%;
+    }
+}
+
+.section3 {
+    margin-top: 20px;
+}
+
+.section3 img {
+    width: 100%;
+    width: 390px;
+    transition: .3s ease;
+}
+
+.section3 img:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);
+}
+
+.feature-item img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.feature-item h3 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.product-card {
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background: #fff;
+}
+
+.product-card img {
+    width: 50%;
+    height: auto;
+    max-height: 150px;
+    object-fit: cover;
+}
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.scroll-container .product-wrapper {
+    display: inline-block;
+    width: 48%; /* عرض المنتج بشكل مناسب */
+    margin-right: 2%; /* المسافة بين المنتجات */
+    vertical-align: top;
+}
+.section7 img {
+    width: 100%;
+    margin-right: 10px;
+    margin-top: 10px;
+    transition: .3s ease;
+
+}
+.section7 img:hover{
+    transform: scale(1.01);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* تصميم الكاروسيل الخاص بالمنتجات */
+#product-container {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto; /* تفعيل التمرير الأفقي */
+    padding-bottom: 15px;
+    scroll-behavior: smooth; /* تمرير سلس */
+}
+
+#product-container::-webkit-scrollbar {
+    height: 8px; /* حجم شريط التمرير */
+}
+
+#product-container::-webkit-scrollbar-thumb {
+    background-color: #888; /* لون شريط التمرير */
+    border-radius: 10px;
+}
+
+#product-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+    background: #fff;
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.05); /* تأثير التكبير عند التمرير */
+}
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+/* تصميم الصفوف القابلة للتمرير */
+.row.flex-nowrap {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto; /* تفعيل التمرير الأفقي */
+    padding-bottom: 15px;
+    scroll-behavior: smooth; /* تمرير سلس */
+}
+
+.row.flex-nowrap::-webkit-scrollbar {
+    height: 8px; /* حجم شريط التمرير */
+}
+
+.row.flex-nowrap::-webkit-scrollbar-thumb {
+    background-color: #888; /* لون شريط التمرير */
+    border-radius: 10px;
+}
+
+.row.flex-nowrap::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+/* تصميم المنتج */
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.05); /* تكبير المنتج عند التمرير */
+}
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.img-fluid {
+    border-radius: 5px;
+    transition: .3s ease;
+}
+
+
+
+.product-card {
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background: #fff;
+    transition: transform 0.3s ease;
+}
+
+.product-card img {
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+
+/* إخفاء الصورة الثابتة على الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .col-md-2.d-none.d-md-block {
+        display: none !important;
+    }
+
+    .col-md-10 {
+        flex: 0 0 100%; /* جعل الكاروسيل يملأ العرض */
+        max-width: 100%;
+    }
+}
+.carousel {
+    border: none; /* إزالة أي حدود أو خطوط */
+    margin-bottom: 0; /* إزالة المسافة السفلية */
+}
+.carousel {
+    border: none;
+    margin-bottom: 0;
+}
+img {
+    object-fit: cover;
+}
+
+img.static-banner {
+    max-height: 800px; /* تأكد من ضبط حجم الصورة */
+    object-fit: cover;
+}
+
+.card img {
+    height: 200px; /* أو أي طول ثابت يناسبك */
+    object-fit: cover; /* للحفاظ على تناسب الصورة */
+    width: 100%; /* اجعل العرض متساوٍ مع الكارد */
+  }
+  
+  /* إضافة بعض التأثيرات للتأكد من أن الكاروسيل يظهر في جميع الأجهزة */
+.carousel-inner {
+    display: block;
+    height: auto;
+}
+
+/* التأكد من أن الصور داخل الكاروسيل تظهر بشكل مناسب */
+.carousel-item img {
+    max-height: 100%;
+    width: 100%;
+    object-fit: cover;  /* هذا يضمن أن الصور تغطي المساحة المخصصة لها */
+}
+
+/* إخفاء الصور الثابتة في الشاشات الصغيرة */
+.d-none.d-md-block {
+    display: none;
+}
+
+/* إعدادات القسم */
+.section8 {
+    height: 180px;
+    margin-top: 10px;
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+}
+
+/* تنسيق الصورة والنص */
+.section8 .icon {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    margin-right: 15px;
+    object-fit: cover;
+    
+}
+
+.section8 .text-content {
+    text-align: left;
+}
+
+.section8 h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.section8 p {
+    font-size: 1rem;
+    color: #555;
+    
+}
+
+.section8 h4 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+    
+}
+
+/* تنسيق نموذج الاشتراك */
+.subscribe-form {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.subscribe-form .form-control {
+    max-width: 300px;
+    height: 45px;
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+
+}
+
+.subscribe-form .btn-warning {
+    height: 45px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: var(--main-color);
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-form .btn-warning:hover {
+    background-color: #51af50;
+}
+
+
+* الحاوية العامة */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* تنسيق الكاروسيل */
+.carousel-container {
+    position: relative;
+    margin-top: 20px;
+}
+
+/* أزرار الكاروسيل */
+.carousel-buttons {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.carousel-buttons button {
+    background-color: var(--button-green);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-buttons button:hover {
+    background-color: var(--button-green-hover);
+}
+
+/* تصميم الكروت */
+.product-card {
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background: #fff;
+    transition: transform 0.3s ease;
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-card h5 {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--dark-color);
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    color: var(--parg-color);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+
+/* نافبار */
+.navbar {
+    background-color: #417840; /* اللون الأخضر */
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* تصميم روابط التنقل */
+.navbar .nav-link {
+    color: #ffffff; /* لون النص */
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .nav-link:hover {
+    color: #4dff00; /* لون عند التحويم */
+}
+
+/* تصميم الأيقونات */
+.navbar .nav-link i {
+    font-size: 1.5rem; /* حجم الأيقونة */
+    color: #ffffff; /* لون الأيقونة */
+    margin-left: 10px; /* مسافة بين الأيقونات */
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover i {
+    color: #e0f5e0; /* لون أخضر فاتح عند التحويم */
+}
+
+/* تصميم زر البحث */
+.navbar .btn-outline-success {
+    border-color: #ffffff;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar .btn-outline-success:hover {
+    background-color: #355d2f;
+    border-color: #355d2f;
+}
+
+/* تنسيق حقل البحث */
+.form-container {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 0 20px; /* تحسين الحشو */
+}
+
+.form-container form {
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ffffff; /* حدود الحقل */
+}
+
+/* تحسين مظهر الفورم ليكون على اليمين */
+.navbar .form-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.navbar .form-container form {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .form-container input {
+    width: 250px; /* عرض حقل الإدخال */
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ffffff; /* الحدود */
+}
+
+.navbar .btn-outline-success {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.navbar .btn-outline-success:hover {
+    background-color: #355d2f;
+    border-color: #355d2f;
+}
+
+.subscribe-form .form-control {
+    width: 70%; /* تعديل العرض حسب الحاجة */
+}
+.subscribe-form .btn {
+    white-space: nowrap;
+}
+
+
+/* تصميم الفوتر */
+footer {
+    box-sizing: border-box;
+    min-height: 200px;
+    background-image: url('img/background.jpg'); /* خلفية جذابة */
+    background-size: cover;
+    background-position: center;
+    padding: 40px 20px; /* زيادة المساحة الداخلية */
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+footer img {
+    max-width: 150px;
+    margin-bottom: 15px;
+}
+
+footer .d-flex img {
+    max-width: 30px;
+    height: auto;
+    margin-right: 10px;
+}
+
+footer .d-flex {
+    align-items: center;
+    gap: 10px;
+}
+
+footer p {
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+footer p:hover {
+    color: #51af50; /* تأثير عند التحويم */
+}
+
+/* الروابط داخل الفوتر */
+footer a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #417840;
+}
+
+/* العناوين */
+footer h6 {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #51af50; /* خط سفلي مميز */
+    padding-bottom: 5px;
+}
+
+/* القوائم */
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer ul li {
+    margin-bottom: 10px;
+}
+
+/* نموذج الاشتراك */
+.subscribe-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.subscribe-form input[type="email"] {
+    flex: 1;
+    max-width: 350px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.subscribe-form input[type="email"]:focus {
+    border-color: #51af50;
+}
+
+.subscribe-form button {
+    background-color: #ff9800;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-form button:hover {
+    background-color: #e68900;
+}
+
+/* رابط العودة للأعلى */
+footer .back-to-top {
+    display: inline-block;
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #51af50;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer .back-to-top:hover {
+    color: #fff;
+}
+
+
+
+/* تصميم القائمة الجانبية */
+.cart-sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 350px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: none; /* إخفاء بشكل افتراضي */
+    z-index: 1050;
+    overflow-y: auto;
+    transition: .3s ease;
+}
+
+/* الرأس */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    transition: .3s ease;
+}
+
+.cart-header h2 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cart-header .close-btn {
+    font-size: 24px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* العناصر */
+.cart-items .cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.item-details {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.item-details p {
+    font-size: 14px;
+    margin: 0;
+    color: #333;
+}
+
+.item-details span {
+    font-size: 16px;
+    color: #555;
+}
+
+.remove-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.remove-btn:hover {
+    transition: .3s ease;
+    transform: scale(1.2);
+}
+
+/* الفوتر */
+.cart-footer {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+.subtotal {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.checkout-btn, .shop-more-btn {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.checkout-btn {
+    background-color: var(--main-color);
+    color: var(--bg-light);
+    border-radius: 8px;
+}
+
+.shop-more-btn {
+    background-color: #fff;
+    color: var(--parg-color);
+    border: 1px solid #ddd;
+}
+
+

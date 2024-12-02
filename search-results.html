@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-form .form-control {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+.search-form .btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+}
+
+.search-form .btn:hover {
+    background-color: #218838;
+}
+
+
+#search-results h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+#search-results {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+#search-results .product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#search-results .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#search-results .product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+#search-results .product-card h5 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+#search-results .product-card p {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #777;
+}
+
+.discount-badge {
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.ms-auto {
+    margin-left: auto;
+}
+
+.form-control {
+    width: 250px;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn-outline-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn:hover {
+    background-color: #218838;
+}
+
+#search-form {
+    display: flex;
+    align-items: center;
+}
+
+#search-form input {
+    margin-right: 10px;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#search-form button {
+    padding: 8px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#search-form button:hover {
+    background-color: #218838;
+}
+
+@media (max-width: 768px) {
+    #search-results {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    #search-results {
+        grid-template-columns: 1fr;
+    }
+
+    input{
+        width: 100px;
+    }
+}
+
+    </style>
+</head> 
+
+<body>
+
+    <!-- Navbar -->
+<nav class="container navbar">
+    <div class="row">
+        <!-- الروابط -->
+        <div class="col-md-6 col-sm-12 d-flex">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+        </div>
+        <!-- شريط البحث -->
+        <div class="col-md-6 col-sm-12 d-flex ms-auto">
+            <form class="search-form" id="search-form">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="search-input">
+                <button class="btn" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    
+    <!-- Search Results Container -->
+    <div id="search-results-container">
+        <h3>Search Results</h3>
+        <div id="search-results" class="row">
+            <!-- Results will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+    // الحصول على كلمة البحث من URL
+    const searchParams = new URLSearchParams(window.location.search);
+    const query = searchParams.get("query");
+
+    // التحقق من أن كلمة البحث ليست فارغة
+    if (query) {
+        // جلب المنتجات من ملف JSON
+        fetch('js/items.json')
+            .then(response => response.json())
+            .then(data => {
+                const resultsContainer = document.getElementById('search-results');
+
+                // تصفية المنتجات بناءً على كلمة البحث
+                const filteredProducts = data.filter(product =>
+                    product.name.toLowerCase().includes(query.toLowerCase()) ||
+                    product.description.toLowerCase().includes(query.toLowerCase())
+                );
+
+                // إذا كانت هناك منتجات مطابقة للبحث
+                if (filteredProducts.length > 0) {
+                    filteredProducts.forEach(product => {
+                        resultsContainer.innerHTML += `
+                            <div class="product-card">
+                                ${product.discount ? `<span class="discount-badge">${product.discount}% OFF</span>` : ''}
+                                <a href="product-details.html?id=${product.id}" style="text-decoration: none; color: inherit;">
+                                    <img src="${product.img}" alt="${product.name}" class="img-fluid">
+                                    <h5>${product.name}</h5>
+                                    <p>
+                                        <strong>$${product.price}</strong>
+                                        ${product.old_price ? `<del class="text-muted">$${product.old_price}</del>` : ''}
+                                    </p>
+                                </a>
+                            </div>
+                        `;
+                    });
+                } else {
+                    // إذا لم توجد نتائج
+                    resultsContainer.innerHTML = "<p>No products found for your search query.</p>";
+                }
+            })
+            .catch(error => console.error("Error fetching products:", error));
+    } else {
+        // إذا كانت كلمة البحث فارغة
+        document.getElementById('search-results').innerHTML = "<p>Please enter a search term.</p>";
+    }
+
+    // التعامل مع تقديم نموذج البحث
+    const searchForm = document.getElementById('search-form');
+    searchForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const query = document.getElementById('search-input').value.trim();
+        if (query) {
+            window.location.href = `search-results.html?query=${query}`;
+        } else {
+            alert("Please enter a search term.");
+        }
+    });
+});
+
+    </script>
+
+</body>
+</html>
+
+
+
+
+<!-- CSS -->
+<style>
+/* تنسيق النافبار */
+.navbar {
+    background-color: #333;
+    padding: 10px 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+}
+
+/* شريط البحث */
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-form .form-control {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+.search-form .btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+}
+
+.search-form .btn:hover {
+    background-color: #218838;
+}
+
+/* تخطيط نتائج البحث */
+#search-results {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+#search-results .product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#search-results .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#search-results .product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+#search-results .product-card h5 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+#search-results .product-card p {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #777;
+}
+
+.discount-badge {
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+}
+
+/* استجابة الشاشة الصغيرة */
+@media (max-width: 768px) {
+    #search-results {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    #search-results {
+        grid-template-columns: 1fr;
+    }
+
+    .form-control {
+        width: 100px;
+    }
+}
+</style>
